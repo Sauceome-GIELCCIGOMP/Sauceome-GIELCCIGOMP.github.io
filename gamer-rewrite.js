@@ -16,12 +16,11 @@ function fetchJSONFile(path, callback) {
 //he da og rack earner
 
 window.onload = fetchJSONFile('test.json', function(fuck){
-    var i;
-    for (i = 0; i < 4; i++) {
-        m.mount(document.body, {
-            view: function() {
-                return m("div", {id: [i]}, fuck.Members[i].Name);
-            }
-        });
+    let arr = [];
+
+    for (let i = 0; i < 3; i++) {
+        arr.push( m("p", {id: [i]}, fuck.Members[i].Name) );
     }
+
+    m.render(document.body, m("div", arr));
 });
