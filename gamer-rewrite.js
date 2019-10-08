@@ -17,12 +17,11 @@ function fetchJSONFile(path, callback) {
 
 window.onload = fetchJSONFile('test.json', function(fuck){
     var i;
-    var q;
     for (i = 0; i < 4; i++) {
-        m.render(document.body, m("div", {id: [i]}, fuck.Members[i].Name));
-        for (q = 0; q < 3; q++) {
-            var cock = document.getElementById([i]);
-            cock.innerHTML += fuck.Members[i].Links[q];
-        }
+        m.mount(document.body, {
+            view: function() {
+                return m("div", {id: [i]}, fuck.Members[i].Name);
+            }
+        });
     }
 });
